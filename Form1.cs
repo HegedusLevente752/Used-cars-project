@@ -49,6 +49,7 @@ namespace SoftwareEngineering
                 return;
             }
             
+            
             Profilom profilom = new Profilom();
             profilom.Show();
             this.Hide();

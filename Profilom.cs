@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D; // EZ KELL A GRAPHICSPATH MIATT
+using Microsoft.Data.SqlClient;
 
 namespace SoftwareEngineering
 {
     public partial class Profilom : Form
     {
+        private string connectionString = @"Server=LEXX\SQLEXPRESS;Database=UsedCars;Trusted_Connection=True;TrustServerCertificate=True;";
+
         public Profilom()
         {
             InitializeComponent();
@@ -27,7 +30,43 @@ namespace SoftwareEngineering
                 Form1 form1 = new Form1();
                 form1.Show();
                 this.Hide();
-                // Optionally call this.Close() if the lifecycle rules allow it without destroying the app.
+                return;
+            }
+
+            // Engedélyezzük a mentés gombot
+            button4.Enabled = true;
+
+            // Betöltjük a bejelentkezett felhasználó adatait
+            LoadUserData();
+        }
+
+        private void LoadUserData()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    // lekérjük a user adatait a name alapján (mivel a Form2 a name oszlopot használja username-ként)
+                    string query = "SELECT name, phonenumber, location FROM Users WHERE name = @CurrentUsername";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@CurrentUsername", SessionManager.CurrentUser);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                textBox1.Text = reader.IsDBNull(0) ? "" : reader.GetString(0);
+                                textBox2.Text = reader.IsDBNull(1) ? "" : reader.GetString(1);
+                                textBox3.Text = reader.IsDBNull(2) ? "" : reader.GetString(2);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba az adatok betöltésekor: " + ex.Message, "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -131,7 +170,46 @@ namespace SoftwareEngineering
 
         private void button4_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Adatok sikeressen mentve!");
+            string newName = textBox1.Text.Trim(); // Ez itt már tényleg a valós, teljes név (name)
+            string newPhone = textBox2.Text.Trim();
+            string newLocation = textBox3.Text.Trim();
+
+            if (string.IsNullOrEmpty(newName))
+            {
+                MessageBox.Show("A név nem lehet üres!", "Figyelmeztetés", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    // Mivel a "name" oszlopban tároljuk a felhasználó nevét, a "name" alapján végezzük a WHERE-t is.
+                    // FRISSÍTÉS: Frissítjük a nevet is, meg kell oldani ha a name frissül az legyen a current user.
+                    string updateQuery = "UPDATE Users SET name = @NewName, phonenumber = @Phone, location = @Location WHERE name = @CurrentUsername";
+                    using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@NewName", newName);
+                        // Null check kezelése a telefonhoz és lokációhoz
+                        cmd.Parameters.AddWithValue("@Phone", string.IsNullOrEmpty(newPhone) ? (object)DBNull.Value : newPhone);
+                        cmd.Parameters.AddWithValue("@Location", string.IsNullOrEmpty(newLocation) ? (object)DBNull.Value : newLocation);
+                        cmd.Parameters.AddWithValue("@CurrentUsername", SessionManager.CurrentUser);
+
+                        cmd.ExecuteNonQuery();
+
+                        // Ha az azonosításra használt nevet is módosítottuk, frissíteni kell a session-t
+                        SessionManager.CurrentUser = newName;
+
+                        MessageBox.Show("Adatok sikeresen mentve!", "Mentés", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba a mentés során: " + ex.Message, "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -150,12 +228,22 @@ namespace SoftwareEngineering
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (SessionManager.IsLoggedIn)
+            {
+                SessionManager.Logout();
+                MessageBox.Show("Sikeresen kijelentkeztél.", "Kijelentkezve", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             Form1 form1 = new Form1();
             form1.Show();
             this.Hide();
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

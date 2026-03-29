@@ -199,6 +199,7 @@
             textBox1.TabIndex = 9;
             textBox1.Text = "Hegedűs Levente";
             textBox1.TextAlign = HorizontalAlignment.Center;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button4
             // 

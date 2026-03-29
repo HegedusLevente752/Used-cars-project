@@ -8,12 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D; // EZ KELL A GRAPHICSPATH MIATT
+using Microsoft.Data.SqlClient;
+using Microsoft.VisualBasic; // Kérlek add hozzá csomagként, ha InputBox-ot szeretnél használni vagy hozz létre egy új formot neki
 
 namespace SoftwareEngineering
 {
     public partial class Hirdetes : Form
     {
+        private string connectionString = @"Server=LEXX\SQLEXPRESS;Database=UsedCars;Trusted_Connection=True;TrustServerCertificate=True;";
+
         public Hirdetes()
         {
             InitializeComponent();
@@ -28,16 +31,21 @@ namespace SoftwareEngineering
                 Form1 form1 = new Form1();
                 form1.Show();
                 this.Hide();
+                return; // Ha nincs bejelentkezve, ne fusson tovább a kód
             }
+
+            // Gomb létrehozása, mert eddig nem hívta meg semmi az init kódot!
+            CreateAcceptButton();
         }
 
-        private void Profilom_Load(object sender, EventArgs e)
+        private void CreateAcceptButton()
         {
             Button accept = new Button();
             accept.Size = new Size(50, 50); // Itt állítsd be a kör méretét
             accept.FlatStyle = FlatStyle.Flat;
             accept.FlatAppearance.BorderSize = 0;
             accept.BackColor = Color.LightGreen;
+            accept.Cursor = Cursors.Hand; // Legyen kéz kurzor fölötte
 
             string acceptPath = @"C:\Users\Hegedus\Documents\OOP\SoftwareEngineering\accept.png";
 
@@ -58,13 +66,98 @@ namespace SoftwareEngineering
             // Tedd rá a panelre és legyen kerek
             panel1.Controls.Add(accept);
             MakeRound(accept);
+            accept.BringToFront(); // Hozzuk előtérbe, hogy biztosan kattintható legyen
 
-            // Eseménykezelő (ha rákattintasz, történjen valami)
-            accept.Click += (s, ev) =>
-            {
-                MessageBox.Show("Elfogadva!");
-            };
+            // Eseménykezelő feliratkozás
+            accept.Click += Accept_Click;
         }
+
+        private void Accept_Click(object sender, EventArgs e)
+        {
+            // Ellenőrizzük, hogy minden kötelező mező ki van-e töltve
+            if (string.IsNullOrWhiteSpace(Marka.Text) || string.IsNullOrWhiteSpace(Modell.Text) || string.IsNullOrWhiteSpace(Price.Text))
+            {
+                MessageBox.Show("Kérlek töltsd ki legalább a Márka, Modell és Ára mezőket!", "Hiányzó adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Kép URL bekérése egy InputBox segítségével (feltételezve, hogy nincs külön TextBox neki a formon)
+            // Cserélhető arra is, ha hozzáadsz pl. egy TextBox_ImageUrl mezőt a formhoz.
+            string imageUrl = Interaction.InputBox("Kérlek add meg a feltöltendő kép URL-jét (vagy hagyd üresen, ha nincs):", "Kép URL feltöltése", "");
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    // Mivel a Form2.cs alapján a Users táblában nincs külön ID csak név (vagy a primary kulcs id helyett 'user_id'),
+                    // És a legutóbbi hibaüzenet miatt tudjuk, hogy 'user_id' hiányzik/ismeretlen oszlop a Usersben.
+                    int? userId = null;
+                    // Megpróbáljuk lekérni az 'id' mezőt a Users táblából 
+                    // (ha már dobott hibát, megnéztük, és user_id volt az invalid). Ezért id-t kérdezünk!
+                    string getUserIdQuery = "SELECT id FROM Users WHERE name = @Owner"; 
+                    using (SqlCommand userCmd = new SqlCommand(getUserIdQuery, conn))
+                    {
+                        userCmd.Parameters.AddWithValue("@Owner", SessionManager.CurrentUser);
+                        // Figyelmen kívül hagyjuk a hibát pillanatnyilag, ha a megelőző lekérdezés nem működne, de javítottuk 'id'-ra.
+                        try 
+                        {
+                            object result = userCmd.ExecuteScalar();
+                            if (result != null)
+                            {
+                                userId = Convert.ToInt32(result);
+                            }
+                        } 
+                        catch (SqlException)
+                        {
+                             // ha megint 'invalid column id' dob, akkor nincs sem id, sem user_id, a Users-ben, 
+                             // de valószínűleg csak 'id' a neve a Users táblában lévő primary kulcsnak.
+                        }
+                    }
+
+                    // Az oszlopnevek a képen látottakhoz lettek igazítva. A 'cubic' nem szerepel a képen, így azt kihagyjuk.
+                    string insertQuery = @"
+                        INSERT INTO Ads
+                        (user_id, carbrand, carmodel, year, performance, mileage_km, fuel, transmission, description, price, picture_url, likes) 
+                        VALUES 
+                        (@UserId, @CarBrand, @CarModel, @Year, @Performance, @Mileage, @Fuel, @Transmission, @Description, @Price, @PictureUrl, 0)";
+
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@UserId", userId.HasValue ? (object)userId.Value : DBNull.Value);
+                        cmd.Parameters.AddWithValue("@CarBrand", Marka.Text.Trim());
+                        cmd.Parameters.AddWithValue("@CarModel", Modell.Text.Trim());
+
+                        // Számok konvertálása és null check
+                        cmd.Parameters.AddWithValue("@Year", string.IsNullOrWhiteSpace(Evjarat.Text) ? (object)DBNull.Value : int.Parse(Evjarat.Text.Trim()));
+                        cmd.Parameters.AddWithValue("@Performance", string.IsNullOrWhiteSpace(HP.Text) ? (object)DBNull.Value : HP.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Mileage", string.IsNullOrWhiteSpace(Milage.Text) ? (object)DBNull.Value : int.Parse(Milage.Text.Trim()));
+                        
+                        cmd.Parameters.AddWithValue("@Fuel", Fuel.SelectedItem != null ? Fuel.SelectedItem.ToString() : (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Transmission", GearBox.SelectedItem != null ? GearBox.SelectedItem.ToString() : (object)DBNull.Value);
+                        
+                        // Ár konvertálása decimálissá
+                        cmd.Parameters.AddWithValue("@Price", string.IsNullOrWhiteSpace(Price.Text) ? (object)DBNull.Value : Convert.ToDecimal(Price.Text.Trim()));
+                        cmd.Parameters.AddWithValue("@Description", string.IsNullOrWhiteSpace(Description.Text) ? (object)DBNull.Value : Description.Text.Trim());
+                        cmd.Parameters.AddWithValue("@PictureUrl", string.IsNullOrWhiteSpace(imageUrl) ? (object)DBNull.Value : imageUrl);
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("Hirdetés sikeresen közzétéve!", "Siker", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Opcionális: mezők ürítése mentés után
+                        Marka.Text = ""; Modell.Text = ""; Evjarat.Text = ""; HP.Text = ""; Milage.Text = ""; 
+                        Cubic.Text = ""; Price.Text = ""; Description.Text = ""; Fuel.SelectedIndex = -1; GearBox.SelectedIndex = -1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt a mentés során: " + ex.Message, "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void MakeRound(Control control)
         {
             using (System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath())
@@ -168,8 +261,13 @@ namespace SoftwareEngineering
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();
-            form2.Show();
+            if (SessionManager.IsLoggedIn)
+            {
+                SessionManager.Logout();
+                MessageBox.Show("Sikeresen kijelentkeztél.", "Kijelentkezve", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            Form1 form1 = new Form1();
+            form1.Show();
             this.Hide();
         }
     }
