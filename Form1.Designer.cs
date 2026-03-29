@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Button button1;
-            Button button2;
-            Button button3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             pictureBox1 = new PictureBox();
             DriveZone = new Label();
@@ -72,10 +69,10 @@
             CarBrand = new Label();
             pictureBox2 = new PictureBox();
             ListaGorgeto = new VScrollBar();
-            Name = new Label();
+            UserNameLabel = new Label();
             Number = new Label();
             label18 = new Label();
-            Location = new Label();
+            UserLocation = new Label();
             Loc = new Label();
             button1 = new Button();
             button2 = new Button();
@@ -334,11 +331,11 @@
             // panel3
             // 
             panel3.BackColor = Color.DeepSkyBlue;
-            panel3.Controls.Add(Location);
+            panel3.Controls.Add(UserLocation);
             panel3.Controls.Add(Loc);
             panel3.Controls.Add(Number);
             panel3.Controls.Add(label18);
-            panel3.Controls.Add(Name);
+            panel3.Controls.Add(UserNameLabel);
             panel3.Controls.Add(label12);
             panel3.Controls.Add(label8);
             panel3.Controls.Add(label9);
@@ -583,16 +580,16 @@
             ListaGorgeto.Size = new Size(21, 675);
             ListaGorgeto.TabIndex = 0;
             // 
-            // Name
+            // UserNameLabel
             // 
-            Name.AutoSize = true;
-            Name.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            Name.Location = new Point(19, 466);
-            Name.Name = "Name";
-            Name.Size = new Size(201, 46);
-            Name.TabIndex = 41;
-            Name.Text = "Hegedűs Lexia";
-            Name.UseCompatibleTextRendering = true;
+            UserNameLabel.AutoSize = true;
+            UserNameLabel.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            UserNameLabel.Location = new Point(19, 466);
+            UserNameLabel.Name = "UserNameLabel";
+            UserNameLabel.Size = new Size(201, 46);
+            UserNameLabel.TabIndex = 41;
+            UserNameLabel.Text = "Hegedűs Lexia";
+            UserNameLabel.UseCompatibleTextRendering = true;
             // 
             // Number
             // 
@@ -614,15 +611,15 @@
             label18.TabIndex = 42;
             label18.Text = "Telefonszám:";
             // 
-            // Location
+            // UserLocation
             // 
-            Location.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            Location.ForeColor = Color.Black;
-            Location.Location = new Point(107, 534);
-            Location.Name = "Location";
-            Location.Size = new Size(195, 31);
-            Location.TabIndex = 45;
-            Location.Text = "Zenta";
+            UserLocation.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            UserLocation.ForeColor = Color.Black;
+            UserLocation.Location = new Point(107, 534);
+            UserLocation.Name = "UserLocation";
+            UserLocation.Size = new Size(195, 31);
+            UserLocation.TabIndex = 45;
+            UserLocation.Text = "Zenta";
             // 
             // Loc
             // 
@@ -704,10 +701,13 @@
         private Label label8;
         private Label label9;
         private Label CCm;
-        private Label Location;
+        private Label UserLocation;
         private Label Loc;
         private Label Number;
         private Label label18;
-        private Label Name;
+        private Label UserNameLabel;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }

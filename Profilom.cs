@@ -18,6 +18,19 @@ namespace SoftwareEngineering
             InitializeComponent();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            if (!SessionManager.IsLoggedIn)
+            {
+                MessageBox.Show("Ahhoz, hogy megtekintsd a profilodat, kérlek jelentkezz be.", "Bejelentkezés szükséges", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Form1 form1 = new Form1();
+                form1.Show();
+                this.Hide();
+                // Optionally call this.Close() if the lifecycle rules allow it without destroying the app.
+            }
+        }
+
         private void label3_Click(object sender, EventArgs e)
         {
         }
