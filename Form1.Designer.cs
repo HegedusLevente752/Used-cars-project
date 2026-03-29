@@ -49,13 +49,42 @@
             comboBox1 = new ComboBox();
             label1 = new Label();
             panel2 = new Panel();
+            panel3 = new Panel();
+            label12 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            CCm = new Label();
+            Desc = new Label();
+            label22 = new Label();
+            Trans = new Label();
+            label19 = new Label();
+            label14 = new Label();
+            label16 = new Label();
+            Fuel = new Label();
+            label13 = new Label();
+            Milage = new Label();
+            label10 = new Label();
+            label7 = new Label();
+            HPAmount = new Label();
+            HP = new Label();
+            Year = new Label();
+            CarModel = new Label();
+            CarBrand = new Label();
+            pictureBox2 = new PictureBox();
             ListaGorgeto = new VScrollBar();
+            Name = new Label();
+            Number = new Label();
+            label18 = new Label();
+            Location = new Label();
+            Loc = new Label();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -295,11 +324,257 @@
             // panel2
             // 
             panel2.BackColor = Color.LightSkyBlue;
+            panel2.Controls.Add(panel3);
             panel2.Controls.Add(ListaGorgeto);
             panel2.Location = new Point(425, 82);
             panel2.Name = "panel2";
             panel2.Size = new Size(929, 667);
             panel2.TabIndex = 6;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.DeepSkyBlue;
+            panel3.Controls.Add(Location);
+            panel3.Controls.Add(Loc);
+            panel3.Controls.Add(Number);
+            panel3.Controls.Add(label18);
+            panel3.Controls.Add(Name);
+            panel3.Controls.Add(label12);
+            panel3.Controls.Add(label8);
+            panel3.Controls.Add(label9);
+            panel3.Controls.Add(CCm);
+            panel3.Controls.Add(Desc);
+            panel3.Controls.Add(label22);
+            panel3.Controls.Add(Trans);
+            panel3.Controls.Add(label19);
+            panel3.Controls.Add(label14);
+            panel3.Controls.Add(label16);
+            panel3.Controls.Add(Fuel);
+            panel3.Controls.Add(label13);
+            panel3.Controls.Add(Milage);
+            panel3.Controls.Add(label10);
+            panel3.Controls.Add(label7);
+            panel3.Controls.Add(HPAmount);
+            panel3.Controls.Add(HP);
+            panel3.Controls.Add(Year);
+            panel3.Controls.Add(CarModel);
+            panel3.Controls.Add(CarBrand);
+            panel3.Controls.Add(pictureBox2);
+            panel3.Location = new Point(81, 34);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(708, 601);
+            panel3.TabIndex = 1;
+            // 
+            // label12
+            // 
+            label12.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label12.ForeColor = Color.Black;
+            label12.Location = new Point(205, 406);
+            label12.Name = "label12";
+            label12.Size = new Size(60, 31);
+            label12.TabIndex = 40;
+            label12.Text = "$";
+            // 
+            // label8
+            // 
+            label8.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label8.ForeColor = Color.Black;
+            label8.Location = new Point(57, 406);
+            label8.Name = "label8";
+            label8.Size = new Size(71, 31);
+            label8.TabIndex = 39;
+            label8.Text = "1500";
+            // 
+            // label9
+            // 
+            label9.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label9.ForeColor = SystemColors.ControlDarkDark;
+            label9.Location = new Point(19, 406);
+            label9.Name = "label9";
+            label9.Size = new Size(158, 31);
+            label9.TabIndex = 38;
+            label9.Text = "Ár:";
+            // 
+            // CCm
+            // 
+            CCm.AutoSize = true;
+            CCm.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            CCm.Location = new Point(171, 341);
+            CCm.Name = "CCm";
+            CCm.Size = new Size(66, 32);
+            CCm.TabIndex = 37;
+            CCm.Text = "1998";
+            // 
+            // Desc
+            // 
+            Desc.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            Desc.ForeColor = Color.Black;
+            Desc.Location = new Point(325, 53);
+            Desc.Name = "Desc";
+            Desc.Size = new Size(375, 382);
+            Desc.TabIndex = 36;
+            Desc.Text = "Keveset Hazsnált";
+            // 
+            // label22
+            // 
+            label22.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label22.ForeColor = SystemColors.ControlDarkDark;
+            label22.Location = new Point(332, 22);
+            label22.Name = "label22";
+            label22.Size = new Size(158, 31);
+            label22.TabIndex = 34;
+            label22.Text = "Leírás:";
+            // 
+            // Trans
+            // 
+            Trans.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            Trans.ForeColor = Color.Black;
+            Trans.Location = new Point(82, 370);
+            Trans.Name = "Trans";
+            Trans.Size = new Size(109, 31);
+            Trans.TabIndex = 32;
+            Trans.Text = "Manuál";
+            // 
+            // label19
+            // 
+            label19.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label19.ForeColor = SystemColors.ControlDarkDark;
+            label19.Location = new Point(19, 370);
+            label19.Name = "label19";
+            label19.Size = new Size(158, 31);
+            label19.TabIndex = 31;
+            label19.Text = "Váltó:";
+            // 
+            // label14
+            // 
+            label14.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label14.ForeColor = Color.Black;
+            label14.Location = new Point(259, 339);
+            label14.Name = "label14";
+            label14.Size = new Size(60, 31);
+            label14.TabIndex = 30;
+            label14.Text = "ccm";
+            // 
+            // label16
+            // 
+            label16.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label16.ForeColor = SystemColors.ControlDarkDark;
+            label16.Location = new Point(19, 339);
+            label16.Name = "label16";
+            label16.Size = new Size(158, 31);
+            label16.TabIndex = 28;
+            label16.Text = "Motor méret:";
+            // 
+            // Fuel
+            // 
+            Fuel.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            Fuel.ForeColor = Color.Black;
+            Fuel.Location = new Point(171, 308);
+            Fuel.Name = "Fuel";
+            Fuel.Size = new Size(128, 31);
+            Fuel.TabIndex = 26;
+            Fuel.Text = "Benzin";
+            // 
+            // label13
+            // 
+            label13.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label13.ForeColor = SystemColors.ControlDarkDark;
+            label13.Location = new Point(19, 308);
+            label13.Name = "label13";
+            label13.Size = new Size(158, 31);
+            label13.TabIndex = 25;
+            label13.Text = "Üzemanyag:";
+            // 
+            // Milage
+            // 
+            Milage.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            Milage.ForeColor = Color.Black;
+            Milage.Location = new Point(205, 277);
+            Milage.Name = "Milage";
+            Milage.Size = new Size(114, 31);
+            Milage.TabIndex = 23;
+            Milage.Text = "220 000";
+            // 
+            // label10
+            // 
+            label10.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label10.ForeColor = SystemColors.ControlDarkDark;
+            label10.Location = new Point(19, 277);
+            label10.Name = "label10";
+            label10.Size = new Size(206, 31);
+            label10.TabIndex = 22;
+            label10.Text = "Futáteljesítmény:";
+            // 
+            // label7
+            // 
+            label7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label7.ForeColor = Color.Black;
+            label7.Location = new Point(231, 244);
+            label7.Name = "label7";
+            label7.Size = new Size(88, 31);
+            label7.TabIndex = 21;
+            label7.Text = "Lóerő";
+            // 
+            // HPAmount
+            // 
+            HPAmount.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            HPAmount.ForeColor = Color.Black;
+            HPAmount.Location = new Point(171, 244);
+            HPAmount.Name = "HPAmount";
+            HPAmount.Size = new Size(54, 31);
+            HPAmount.TabIndex = 20;
+            HPAmount.Text = "220";
+            // 
+            // HP
+            // 
+            HP.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            HP.ForeColor = SystemColors.ControlDarkDark;
+            HP.Location = new Point(19, 244);
+            HP.Name = "HP";
+            HP.Size = new Size(158, 31);
+            HP.TabIndex = 19;
+            HP.Text = "Teljesítmény:";
+            // 
+            // Year
+            // 
+            Year.AutoSize = true;
+            Year.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            Year.ForeColor = SystemColors.ControlDarkDark;
+            Year.Location = new Point(245, 164);
+            Year.Name = "Year";
+            Year.Size = new Size(57, 30);
+            Year.TabIndex = 3;
+            Year.Text = "1975";
+            // 
+            // CarModel
+            // 
+            CarModel.AutoSize = true;
+            CarModel.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            CarModel.Location = new Point(28, 204);
+            CarModel.Name = "CarModel";
+            CarModel.Size = new Size(120, 40);
+            CarModel.TabIndex = 2;
+            CarModel.Text = "AMP GT";
+            // 
+            // CarBrand
+            // 
+            CarBrand.AutoSize = true;
+            CarBrand.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            CarBrand.Location = new Point(28, 164);
+            CarBrand.Name = "CarBrand";
+            CarBrand.Size = new Size(125, 40);
+            CarBrand.TabIndex = 1;
+            CarBrand.Text = "Satsuma";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(28, 22);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(271, 135);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 0;
+            pictureBox2.TabStop = false;
             // 
             // ListaGorgeto
             // 
@@ -307,6 +582,57 @@
             ListaGorgeto.Name = "ListaGorgeto";
             ListaGorgeto.Size = new Size(21, 675);
             ListaGorgeto.TabIndex = 0;
+            // 
+            // Name
+            // 
+            Name.AutoSize = true;
+            Name.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            Name.Location = new Point(19, 466);
+            Name.Name = "Name";
+            Name.Size = new Size(201, 46);
+            Name.TabIndex = 41;
+            Name.Text = "Hegedűs Lexia";
+            Name.UseCompatibleTextRendering = true;
+            // 
+            // Number
+            // 
+            Number.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            Number.ForeColor = Color.Black;
+            Number.Location = new Point(171, 503);
+            Number.Name = "Number";
+            Number.Size = new Size(195, 31);
+            Number.TabIndex = 43;
+            Number.Text = "063-123-2456";
+            // 
+            // label18
+            // 
+            label18.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label18.ForeColor = SystemColors.ControlDarkDark;
+            label18.Location = new Point(19, 503);
+            label18.Name = "label18";
+            label18.Size = new Size(158, 31);
+            label18.TabIndex = 42;
+            label18.Text = "Telefonszám:";
+            // 
+            // Location
+            // 
+            Location.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            Location.ForeColor = Color.Black;
+            Location.Location = new Point(107, 534);
+            Location.Name = "Location";
+            Location.Size = new Size(195, 31);
+            Location.TabIndex = 45;
+            Location.Text = "Zenta";
+            // 
+            // Loc
+            // 
+            Loc.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            Loc.ForeColor = SystemColors.ControlDarkDark;
+            Loc.Location = new Point(19, 534);
+            Loc.Name = "Loc";
+            Loc.Size = new Size(97, 31);
+            Loc.TabIndex = 44;
+            Loc.Text = "Lakcím:";
             // 
             // Form1
             // 
@@ -328,6 +654,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -351,5 +680,34 @@
         private Panel panel2;
         private Button button4;
         private VScrollBar ListaGorgeto;
+        private Panel panel3;
+        private PictureBox pictureBox2;
+        private Label Year;
+        private Label CarModel;
+        private Label CarBrand;
+        private Label Desc;
+        private Label label22;
+        private Label Trans;
+        private Label label19;
+        private Label label14;
+        private Label label15;
+        private Label label16;
+        private Label label11;
+        private Label Fuel;
+        private Label label13;
+        private Label Milage;
+        private Label label10;
+        private Label label7;
+        private Label HPAmount;
+        private Label HP;
+        private Label label12;
+        private Label label8;
+        private Label label9;
+        private Label CCm;
+        private Label Location;
+        private Label Loc;
+        private Label Number;
+        private Label label18;
+        private Label Name;
     }
 }

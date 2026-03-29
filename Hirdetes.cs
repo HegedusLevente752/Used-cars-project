@@ -48,7 +48,8 @@ namespace SoftwareEngineering
             MakeRound(accept);
 
             // Eseménykezelő (ha rákattintasz, történjen valami)
-            accept.Click += (s, ev) => {
+            accept.Click += (s, ev) =>
+            {
                 MessageBox.Show("Elfogadva!");
             };
         }
@@ -144,6 +145,20 @@ namespace SoftwareEngineering
         private void panel1_Resize(object sender, EventArgs e)
         {
             panel1.Invalidate();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Profilom profilom = new Profilom();
+            profilom.Show();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
+            this.Hide();
         }
     }
 }
