@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Button button1;
+            Button button2;
+            Button button3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             pictureBox1 = new PictureBox();
             DriveZone = new Label();
@@ -47,6 +50,12 @@
             label1 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
+            label17 = new Label();
+            UserLocation = new Label();
+            Loc = new Label();
+            Number = new Label();
+            label18 = new Label();
+            UserNameLabel = new Label();
             label12 = new Label();
             label8 = new Label();
             label9 = new Label();
@@ -67,13 +76,7 @@
             Year = new Label();
             CarModel = new Label();
             CarBrand = new Label();
-            pictureBox2 = new PictureBox();
             ListaGorgeto = new VScrollBar();
-            UserNameLabel = new Label();
-            Number = new Label();
-            label18 = new Label();
-            UserLocation = new Label();
-            Loc = new Label();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
@@ -81,7 +84,6 @@
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -331,6 +333,7 @@
             // panel3
             // 
             panel3.BackColor = Color.DeepSkyBlue;
+            panel3.Controls.Add(label17);
             panel3.Controls.Add(UserLocation);
             panel3.Controls.Add(Loc);
             panel3.Controls.Add(Number);
@@ -356,17 +359,76 @@
             panel3.Controls.Add(Year);
             panel3.Controls.Add(CarModel);
             panel3.Controls.Add(CarBrand);
-            panel3.Controls.Add(pictureBox2);
             panel3.Location = new Point(81, 34);
             panel3.Name = "panel3";
             panel3.Size = new Size(708, 601);
             panel3.TabIndex = 1;
             // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(19, 298);
+            label17.Name = "label17";
+            label17.Size = new Size(44, 15);
+            label17.TabIndex = 46;
+            label17.Text = "label17";
+            // 
+            // UserLocation
+            // 
+            UserLocation.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            UserLocation.ForeColor = Color.Black;
+            UserLocation.Location = new Point(107, 534);
+            UserLocation.Name = "UserLocation";
+            UserLocation.Size = new Size(195, 31);
+            UserLocation.TabIndex = 45;
+            UserLocation.Text = "Zenta";
+            // 
+            // Loc
+            // 
+            Loc.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            Loc.ForeColor = SystemColors.ControlDarkDark;
+            Loc.Location = new Point(19, 534);
+            Loc.Name = "Loc";
+            Loc.Size = new Size(97, 31);
+            Loc.TabIndex = 44;
+            Loc.Text = "Lakcím:";
+            // 
+            // Number
+            // 
+            Number.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            Number.ForeColor = Color.Black;
+            Number.Location = new Point(171, 503);
+            Number.Name = "Number";
+            Number.Size = new Size(195, 31);
+            Number.TabIndex = 43;
+            Number.Text = "063-123-2456";
+            // 
+            // label18
+            // 
+            label18.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            label18.ForeColor = SystemColors.ControlDarkDark;
+            label18.Location = new Point(19, 503);
+            label18.Name = "label18";
+            label18.Size = new Size(158, 31);
+            label18.TabIndex = 42;
+            label18.Text = "Telefonszám:";
+            // 
+            // UserNameLabel
+            // 
+            UserNameLabel.AutoSize = true;
+            UserNameLabel.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            UserNameLabel.Location = new Point(19, 466);
+            UserNameLabel.Name = "UserNameLabel";
+            UserNameLabel.Size = new Size(201, 46);
+            UserNameLabel.TabIndex = 41;
+            UserNameLabel.Text = "Hegedűs Lexia";
+            UserNameLabel.UseCompatibleTextRendering = true;
+            // 
             // label12
             // 
             label12.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label12.ForeColor = Color.Black;
-            label12.Location = new Point(205, 406);
+            label12.Location = new Point(205, 257);
             label12.Name = "label12";
             label12.Size = new Size(60, 31);
             label12.TabIndex = 40;
@@ -376,7 +438,7 @@
             // 
             label8.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(57, 406);
+            label8.Location = new Point(57, 257);
             label8.Name = "label8";
             label8.Size = new Size(71, 31);
             label8.TabIndex = 39;
@@ -386,7 +448,7 @@
             // 
             label9.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label9.ForeColor = SystemColors.ControlDarkDark;
-            label9.Location = new Point(19, 406);
+            label9.Location = new Point(19, 257);
             label9.Name = "label9";
             label9.Size = new Size(158, 31);
             label9.TabIndex = 38;
@@ -396,7 +458,7 @@
             // 
             CCm.AutoSize = true;
             CCm.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            CCm.Location = new Point(171, 341);
+            CCm.Location = new Point(171, 192);
             CCm.Name = "CCm";
             CCm.Size = new Size(66, 32);
             CCm.TabIndex = 37;
@@ -426,7 +488,7 @@
             // 
             Trans.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             Trans.ForeColor = Color.Black;
-            Trans.Location = new Point(82, 370);
+            Trans.Location = new Point(82, 221);
             Trans.Name = "Trans";
             Trans.Size = new Size(109, 31);
             Trans.TabIndex = 32;
@@ -436,7 +498,7 @@
             // 
             label19.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label19.ForeColor = SystemColors.ControlDarkDark;
-            label19.Location = new Point(19, 370);
+            label19.Location = new Point(19, 221);
             label19.Name = "label19";
             label19.Size = new Size(158, 31);
             label19.TabIndex = 31;
@@ -446,7 +508,7 @@
             // 
             label14.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label14.ForeColor = Color.Black;
-            label14.Location = new Point(259, 339);
+            label14.Location = new Point(259, 190);
             label14.Name = "label14";
             label14.Size = new Size(60, 31);
             label14.TabIndex = 30;
@@ -456,7 +518,7 @@
             // 
             label16.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label16.ForeColor = SystemColors.ControlDarkDark;
-            label16.Location = new Point(19, 339);
+            label16.Location = new Point(19, 190);
             label16.Name = "label16";
             label16.Size = new Size(158, 31);
             label16.TabIndex = 28;
@@ -466,7 +528,7 @@
             // 
             Fuel.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             Fuel.ForeColor = Color.Black;
-            Fuel.Location = new Point(171, 308);
+            Fuel.Location = new Point(171, 159);
             Fuel.Name = "Fuel";
             Fuel.Size = new Size(128, 31);
             Fuel.TabIndex = 26;
@@ -476,7 +538,7 @@
             // 
             label13.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label13.ForeColor = SystemColors.ControlDarkDark;
-            label13.Location = new Point(19, 308);
+            label13.Location = new Point(19, 159);
             label13.Name = "label13";
             label13.Size = new Size(158, 31);
             label13.TabIndex = 25;
@@ -486,7 +548,7 @@
             // 
             Milage.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             Milage.ForeColor = Color.Black;
-            Milage.Location = new Point(205, 277);
+            Milage.Location = new Point(205, 128);
             Milage.Name = "Milage";
             Milage.Size = new Size(114, 31);
             Milage.TabIndex = 23;
@@ -496,7 +558,7 @@
             // 
             label10.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label10.ForeColor = SystemColors.ControlDarkDark;
-            label10.Location = new Point(19, 277);
+            label10.Location = new Point(19, 128);
             label10.Name = "label10";
             label10.Size = new Size(206, 31);
             label10.TabIndex = 22;
@@ -506,7 +568,7 @@
             // 
             label7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(231, 244);
+            label7.Location = new Point(231, 97);
             label7.Name = "label7";
             label7.Size = new Size(88, 31);
             label7.TabIndex = 21;
@@ -516,7 +578,7 @@
             // 
             HPAmount.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             HPAmount.ForeColor = Color.Black;
-            HPAmount.Location = new Point(171, 244);
+            HPAmount.Location = new Point(171, 95);
             HPAmount.Name = "HPAmount";
             HPAmount.Size = new Size(54, 31);
             HPAmount.TabIndex = 20;
@@ -526,7 +588,7 @@
             // 
             HP.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
             HP.ForeColor = SystemColors.ControlDarkDark;
-            HP.Location = new Point(19, 244);
+            HP.Location = new Point(19, 95);
             HP.Name = "HP";
             HP.Size = new Size(158, 31);
             HP.TabIndex = 19;
@@ -537,7 +599,7 @@
             Year.AutoSize = true;
             Year.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             Year.ForeColor = SystemColors.ControlDarkDark;
-            Year.Location = new Point(245, 164);
+            Year.Location = new Point(245, 15);
             Year.Name = "Year";
             Year.Size = new Size(57, 30);
             Year.TabIndex = 3;
@@ -547,7 +609,7 @@
             // 
             CarModel.AutoSize = true;
             CarModel.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            CarModel.Location = new Point(28, 204);
+            CarModel.Location = new Point(28, 55);
             CarModel.Name = "CarModel";
             CarModel.Size = new Size(120, 40);
             CarModel.TabIndex = 2;
@@ -557,21 +619,11 @@
             // 
             CarBrand.AutoSize = true;
             CarBrand.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            CarBrand.Location = new Point(28, 164);
+            CarBrand.Location = new Point(28, 15);
             CarBrand.Name = "CarBrand";
             CarBrand.Size = new Size(125, 40);
             CarBrand.TabIndex = 1;
             CarBrand.Text = "Satsuma";
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(28, 22);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(271, 135);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
             // 
             // ListaGorgeto
             // 
@@ -579,57 +631,6 @@
             ListaGorgeto.Name = "ListaGorgeto";
             ListaGorgeto.Size = new Size(21, 675);
             ListaGorgeto.TabIndex = 0;
-            // 
-            // UserNameLabel
-            // 
-            UserNameLabel.AutoSize = true;
-            UserNameLabel.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            UserNameLabel.Location = new Point(19, 466);
-            UserNameLabel.Name = "UserNameLabel";
-            UserNameLabel.Size = new Size(201, 46);
-            UserNameLabel.TabIndex = 41;
-            UserNameLabel.Text = "Hegedűs Lexia";
-            UserNameLabel.UseCompatibleTextRendering = true;
-            // 
-            // Number
-            // 
-            Number.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            Number.ForeColor = Color.Black;
-            Number.Location = new Point(171, 503);
-            Number.Name = "Number";
-            Number.Size = new Size(195, 31);
-            Number.TabIndex = 43;
-            Number.Text = "063-123-2456";
-            // 
-            // label18
-            // 
-            label18.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label18.ForeColor = SystemColors.ControlDarkDark;
-            label18.Location = new Point(19, 503);
-            label18.Name = "label18";
-            label18.Size = new Size(158, 31);
-            label18.TabIndex = 42;
-            label18.Text = "Telefonszám:";
-            // 
-            // UserLocation
-            // 
-            UserLocation.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            UserLocation.ForeColor = Color.Black;
-            UserLocation.Location = new Point(107, 534);
-            UserLocation.Name = "UserLocation";
-            UserLocation.Size = new Size(195, 31);
-            UserLocation.TabIndex = 45;
-            UserLocation.Text = "Zenta";
-            // 
-            // Loc
-            // 
-            Loc.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            Loc.ForeColor = SystemColors.ControlDarkDark;
-            Loc.Location = new Point(19, 534);
-            Loc.Name = "Loc";
-            Loc.Size = new Size(97, 31);
-            Loc.TabIndex = 44;
-            Loc.Text = "Lakcím:";
             // 
             // Form1
             // 
@@ -653,7 +654,6 @@
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -678,7 +678,6 @@
         private Button button4;
         private VScrollBar ListaGorgeto;
         private Panel panel3;
-        private PictureBox pictureBox2;
         private Label Year;
         private Label CarModel;
         private Label CarBrand;
@@ -709,5 +708,6 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private Label label17;
     }
 }

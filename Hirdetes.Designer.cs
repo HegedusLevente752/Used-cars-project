@@ -51,14 +51,12 @@
             label1 = new Label();
             Modell = new TextBox();
             Marka = new TextBox();
-            pictureBox2 = new PictureBox();
             Evjarat = new TextBox();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // button3
@@ -134,6 +132,7 @@
             // panel1
             // 
             panel1.BackColor = Color.LightSkyBlue;
+            panel1.Controls.Add(Evjarat);
             panel1.Controls.Add(Price);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(Description);
@@ -150,7 +149,6 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(Modell);
             panel1.Controls.Add(Marka);
-            panel1.Controls.Add(pictureBox2);
             panel1.Location = new Point(441, 143);
             panel1.Name = "panel1";
             panel1.Size = new Size(637, 453);
@@ -161,7 +159,7 @@
             // 
             Price.BackColor = Color.LightSkyBlue;
             Price.Cursor = Cursors.IBeam;
-            Price.Location = new Point(119, 198);
+            Price.Location = new Point(63, 177);
             Price.Multiline = true;
             Price.Name = "Price";
             Price.PlaceholderText = "Ára";
@@ -173,7 +171,7 @@
             // label7
             // 
             label7.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label7.Location = new Point(70, 195);
+            label7.Location = new Point(14, 174);
             label7.Name = "label7";
             label7.Size = new Size(189, 37);
             label7.TabIndex = 23;
@@ -183,11 +181,11 @@
             // 
             Description.BackColor = Color.LightSkyBlue;
             Description.Cursor = Cursors.IBeam;
-            Description.Location = new Point(80, 278);
+            Description.Location = new Point(80, 279);
             Description.Multiline = true;
             Description.Name = "Description";
             Description.PlaceholderText = "Lóerő";
-            Description.Size = new Size(554, 123);
+            Description.Size = new Size(256, 123);
             Description.TabIndex = 22;
             Description.Tag = "";
             Description.Text = "  ";
@@ -195,7 +193,7 @@
             // label6
             // 
             label6.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label6.Location = new Point(3, 269);
+            label6.Location = new Point(3, 272);
             label6.Name = "label6";
             label6.Size = new Size(229, 37);
             label6.TabIndex = 21;
@@ -207,7 +205,7 @@
             GearBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             GearBox.FormattingEnabled = true;
             GearBox.Items.AddRange(new object[] { "Manuál", "Automata", "CVT", "DCT", "Szekvenciális" });
-            GearBox.Location = new Point(354, 232);
+            GearBox.Location = new Point(82, 244);
             GearBox.Name = "GearBox";
             GearBox.Size = new Size(121, 25);
             GearBox.TabIndex = 20;
@@ -215,7 +213,7 @@
             // label5
             // 
             label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label5.Location = new Point(286, 227);
+            label5.Location = new Point(14, 239);
             label5.Name = "label5";
             label5.Size = new Size(189, 37);
             label5.TabIndex = 19;
@@ -225,7 +223,7 @@
             // 
             Cubic.BackColor = Color.LightSkyBlue;
             Cubic.Cursor = Cursors.IBeam;
-            Cubic.Location = new Point(480, 190);
+            Cubic.Location = new Point(206, 218);
             Cubic.Multiline = true;
             Cubic.Name = "Cubic";
             Cubic.PlaceholderText = "Motor méret";
@@ -237,12 +235,11 @@
             // label4
             // 
             label4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label4.Location = new Point(286, 184);
+            label4.Location = new Point(12, 212);
             label4.Name = "label4";
             label4.Size = new Size(205, 37);
             label4.TabIndex = 17;
             label4.Text = "Motor méret (ccm):";
-            label4.Click += label4_Click;
             // 
             // Fuel
             // 
@@ -250,7 +247,7 @@
             Fuel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
             Fuel.FormattingEnabled = true;
             Fuel.Items.AddRange(new object[] { "Benzin", "Dízel", "Hybrid", "Elektromos" });
-            Fuel.Location = new Point(422, 153);
+            Fuel.Location = new Point(150, 146);
             Fuel.Name = "Fuel";
             Fuel.Size = new Size(121, 25);
             Fuel.TabIndex = 16;
@@ -258,7 +255,7 @@
             // label3
             // 
             label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label3.Location = new Point(286, 147);
+            label3.Location = new Point(14, 140);
             label3.Name = "label3";
             label3.Size = new Size(189, 37);
             label3.TabIndex = 15;
@@ -268,7 +265,7 @@
             // 
             Milage.BackColor = Color.LightSkyBlue;
             Milage.Cursor = Cursors.IBeam;
-            Milage.Location = new Point(508, 115);
+            Milage.Location = new Point(236, 108);
             Milage.Multiline = true;
             Milage.Name = "Milage";
             Milage.PlaceholderText = "Lóerő";
@@ -280,7 +277,7 @@
             // label2
             // 
             label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label2.Location = new Point(286, 110);
+            label2.Location = new Point(14, 103);
             label2.Name = "label2";
             label2.Size = new Size(229, 37);
             label2.TabIndex = 13;
@@ -290,7 +287,7 @@
             // 
             HP.BackColor = Color.LightSkyBlue;
             HP.Cursor = Cursors.IBeam;
-            HP.Location = new Point(471, 76);
+            HP.Location = new Point(199, 69);
             HP.Multiline = true;
             HP.Name = "HP";
             HP.PlaceholderText = "Lóerő";
@@ -298,12 +295,11 @@
             HP.TabIndex = 12;
             HP.Tag = "";
             HP.Text = "  ";
-            HP.TextChanged += HP_TextChanged;
             // 
             // label1
             // 
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label1.Location = new Point(286, 73);
+            label1.Location = new Point(14, 66);
             label1.Name = "label1";
             label1.Size = new Size(189, 37);
             label1.TabIndex = 3;
@@ -313,7 +309,7 @@
             // 
             Modell.BackColor = Color.LightSkyBlue;
             Modell.Cursor = Cursors.IBeam;
-            Modell.Location = new Point(286, 47);
+            Modell.Location = new Point(19, 40);
             Modell.Multiline = true;
             Modell.Name = "Modell";
             Modell.PlaceholderText = "Modell";
@@ -325,7 +321,7 @@
             // 
             Marka.BackColor = Color.LightSkyBlue;
             Marka.Cursor = Cursors.IBeam;
-            Marka.Location = new Point(286, 18);
+            Marka.Location = new Point(19, 11);
             Marka.Multiline = true;
             Marka.Name = "Marka";
             Marka.PlaceholderText = "Márka";
@@ -333,21 +329,11 @@
             Marka.TabIndex = 1;
             Marka.Tag = "";
             // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(3, 3);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(277, 189);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
-            // 
             // Evjarat
             // 
             Evjarat.BackColor = Color.LightSkyBlue;
             Evjarat.Cursor = Cursors.IBeam;
-            Evjarat.Location = new Point(949, 161);
+            Evjarat.Location = new Point(532, 18);
             Evjarat.Multiline = true;
             Evjarat.Name = "Evjarat";
             Evjarat.PlaceholderText = "Évjárat";
@@ -361,7 +347,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1424, 761);
-            Controls.Add(Evjarat);
             Controls.Add(panel1);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -373,9 +358,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
