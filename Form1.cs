@@ -315,7 +315,98 @@ namespace SoftwareEngineering
             CopyLabel(Number, ownerPhone);
             CopyLabel(UserNameLabel, ownerName);
 
+            // LIKE gomb létrehozása
+            Button likeBtn = new Button();
+            likeBtn.Size = new Size(40, 40);
+            likeBtn.Location = new Point(pnl.Width - 140, pnl.Height - 50); // Példa pozíció (nyugodtan igazítsd a UI-hoz)
+            likeBtn.FlatStyle = FlatStyle.Flat;
+            likeBtn.FlatAppearance.BorderSize = 0;
+            likeBtn.BackColor = Color.Yellow; // Sárga háttér
+            likeBtn.Cursor = Cursors.Hand;
+
+            // Kép betöltése
+            string initialPath = @"C:\Users\Hegedus\Documents\OOP\SoftwareEngineering\mdi_heart.png";
+            if (System.IO.File.Exists(initialPath))
+            {
+                likeBtn.Image = Image.FromFile(initialPath);
+                likeBtn.ImageAlign = ContentAlignment.MiddleCenter;
+            }
+            else
+            {
+                likeBtn.Text = "?";
+                likeBtn.Font = new Font("Segoe UI", 16);
+                likeBtn.ForeColor = Color.Black;
+            }
+            
+            // Kör alakúra formázás
+            System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
+            gp.AddEllipse(0, 0, likeBtn.Width, likeBtn.Height);
+            likeBtn.Region = new Region(gp);
+
+            // Elmentjük az ID-t, hogy tudjuk, melyik hirdetést likeoljuk
+            int adId = reader["ad_id"] != DBNull.Value ? Convert.ToInt32(reader["ad_id"]) : -1;
+            likeBtn.Tag = adId;
+
+            likeBtn.Click += LikeButton_Click;
+
+            pnl.Controls.Add(likeBtn);
+
             return pnl;
+        }
+
+        private void LikeButton_Click(object sender, EventArgs e)
+        {
+            if (!SessionManager.IsLoggedIn)
+            {
+                MessageBox.Show("Ahhoz, hogy kedvelj egy hirdetést, be kell jelentkezned.", "Jelentkezz be", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            Button clickedBtn = sender as Button;
+            if (clickedBtn == null) return;
+
+            // AccessibleName segítségével tároljuk, hogy like-olta-e már
+            if (clickedBtn.AccessibleName == "liked")
+            {
+                return; // Már likeolta
+            }
+
+            int adId = (int)clickedBtn.Tag;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "UPDATE Ads SET likes = likes + 1 WHERE ad_id = @AdId";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@AdId", adId);
+                        int rows = cmd.ExecuteNonQuery();
+
+                        if (rows > 0)
+                        {
+                            // Kép cseréje körvonalas szívre (átlátszó belsõ)
+                            string outlinePath = @"C:\Users\Hegedus\Documents\OOP\SoftwareEngineering\mdi_heart-outline.png";
+                            if (System.IO.File.Exists(outlinePath))
+                            {
+                                clickedBtn.Image = Image.FromFile(outlinePath);
+                            }
+                            else
+                            {
+                                clickedBtn.Text = "?";
+                                clickedBtn.ForeColor = Color.White;
+                            }
+                            
+                            clickedBtn.AccessibleName = "liked"; // Megjelöljük like-oltnak
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba a kedvelés során: " + ex.Message, "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void UpdateUI()

@@ -50,7 +50,6 @@
             label1 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
-            label17 = new Label();
             UserLocation = new Label();
             Loc = new Label();
             Number = new Label();
@@ -333,7 +332,6 @@
             // panel3
             // 
             panel3.BackColor = Color.DeepSkyBlue;
-            panel3.Controls.Add(label17);
             panel3.Controls.Add(UserLocation);
             panel3.Controls.Add(Loc);
             panel3.Controls.Add(Number);
@@ -363,15 +361,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(708, 601);
             panel3.TabIndex = 1;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Location = new Point(19, 298);
-            label17.Name = "label17";
-            label17.Size = new Size(44, 15);
-            label17.TabIndex = 46;
-            label17.Text = "label17";
             // 
             // UserLocation
             // 
@@ -708,6 +697,5 @@
         private Button button1;
         private Button button2;
         private Button button3;
-        private Label label17;
     }
 }

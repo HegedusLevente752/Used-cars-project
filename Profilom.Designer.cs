@@ -61,7 +61,6 @@
             CarModel = new Label();
             Year = new Label();
             CarName = new Label();
-            pictureBox2 = new PictureBox();
             panel4 = new Panel();
             ListaGorgeto = new VScrollBar();
             button3 = new Button();
@@ -71,7 +70,6 @@
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
@@ -282,7 +280,6 @@
             panel3.Controls.Add(CarModel);
             panel3.Controls.Add(Year);
             panel3.Controls.Add(CarName);
-            panel3.Controls.Add(pictureBox2);
             panel3.Location = new Point(48, 77);
             panel3.Name = "panel3";
             panel3.Size = new Size(654, 275);
@@ -424,7 +421,7 @@
             // CarModel
             // 
             CarModel.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            CarModel.Location = new Point(222, 69);
+            CarModel.Location = new Point(3, 57);
             CarModel.Name = "CarModel";
             CarModel.Size = new Size(310, 69);
             CarModel.TabIndex = 3;
@@ -443,21 +440,11 @@
             // CarName
             // 
             CarName.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            CarName.Location = new Point(222, 17);
+            CarName.Location = new Point(3, 5);
             CarName.Name = "CarName";
             CarName.Size = new Size(310, 52);
             CarName.TabIndex = 1;
             CarName.Text = "Satsuma";
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(3, 3);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(213, 129);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
             // 
             // panel4
             // 
@@ -499,7 +486,6 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel4.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -519,7 +505,6 @@
         private Panel panel2;
         private Label label4;
         private Panel panel3;
-        private PictureBox pictureBox2;
         private Label Year;
         private Label CarName;
         private Label HP;

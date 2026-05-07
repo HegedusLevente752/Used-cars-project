@@ -199,45 +199,8 @@ namespace SoftwareEngineering
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
-
-            int diameter = 35;
-            int margin = 50;
-            int x = panel1.Width - 50;
-            int y = panel1.Height - 50;
-
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
-            using (Brush brush = new SolidBrush(Color.LightGreen))
-            {
-                e.Graphics.FillEllipse(brush, x, y, diameter, diameter);
-            }
-
-            string acceptPath = @"C:\Users\Hegedus\Documents\OOP\SoftwareEngineering\accept.png";
-
-            if (System.IO.File.Exists(acceptPath))
-            {
-                using (Image originalIcon = Image.FromFile(acceptPath))
-                {
-                    int iconSize = 30;
-                    int iconX = x + (diameter - iconSize) / 2;
-                    int iconY = y + (diameter - iconSize) / 2;
-
-                    e.Graphics.DrawImage(originalIcon, iconX, iconY, iconSize, iconSize);
-                }
-            }
-            else
-            {
-                using (Font font = new Font("Arial", 20, FontStyle.Bold))
-                {
-                    string text = "V";
-                    SizeF textSize = e.Graphics.MeasureString(text, font);
-                    float textX = x + (diameter - textSize.Width) / 2;
-                    float textY = y + (diameter - textSize.Height) / 2;
-
-                    e.Graphics.DrawString(text, font, Brushes.White, textX, textY);
-                }
-            }
+            // Painting of a static green circle removed because a clickable accept button is added dynamically.
+            // Leaving empty to avoid duplicate visuals.
         }
 
         private void panel1_Resize(object sender, EventArgs e)
