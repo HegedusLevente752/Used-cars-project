@@ -87,6 +87,7 @@
             button3.TabIndex = 7;
             button3.Text = "Hirdetés közzététele";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 

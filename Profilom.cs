@@ -68,7 +68,7 @@ namespace SoftwareEngineering
             {
                 MessageBox.Show("Hiba az adatok betöltésekor: " + ex.Message, "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
             LoadUserAds();
         }
 
@@ -442,6 +442,16 @@ namespace SoftwareEngineering
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (SessionManager.IsLoggedIn)
+            {
+                Hirdetes hirdetes = new Hirdetes();
+                hirdetes.Show();
+                this.Hide();
+            }
         }
     }
 }
